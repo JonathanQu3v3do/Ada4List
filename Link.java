@@ -6,7 +6,7 @@ public class Link {
     public Link(double dd ) {
         dData = dd;
     }
-    
+
     public void displayLink() {
         System.out.print("{" + dData + "} ");
     }
@@ -29,6 +29,14 @@ public class Link {
 
     public void setNext(Link next) {
         this.next = next;
+    }
+
+    public void firstNode() {
+        System.out.print("El primer dato de la lista es: " + dData +"\n");
+    }
+
+    public void LastNode() {
+        System.out.print("El ultimo dato de la lista es: " + dData+ "\n");
     }
 
 

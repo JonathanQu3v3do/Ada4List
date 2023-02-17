@@ -6,6 +6,26 @@ public class LinkList {
 
     }
 
+    public void firstNode() throws IsEmptyException {
+        Link current = first;
+        if (isEmpty()) {
+            throw new IsEmptyException("la lista esta vacia: ");
+        }
+
+        current.firstNode();
+
+    }
+
+    public void LastNode() throws IsEmptyException {
+        Link current = first;
+        if (!isEmpty()) {
+            while (current.getNext() != null) {
+                current = current.getNext();
+            }
+            current.LastNode();
+        }
+    }
+
     public boolean isEmpty() {
         return (first == null);
     }
