@@ -1,18 +1,29 @@
 public class ListMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NullPointerException {
         LinkList list = new LinkList();
         try {
-            list.insertFirst(5);
-            list.insertFirst(6);
-            list.insertFirst(10);
+            list.insertFirst(8);
+            list.menorNode(6);
+            list.menorNode(10);
+            list.menorNode(7);
             list.displayList();
+            
+            
+            
+            System.out.println("el tamaño de la lista es: " + list.size());
 
-            list.firstNode();
-            list.LastNode();
+             int value = 1;
+             System.out.println("El valor " + value + " esta en la posicion: " +list.find(value));
 
-        } catch (IsEmptyException e) {
+            // list.deleLink(7);
+            // list.displayList();
 
-            e.printStackTrace();
+            // list.firstNode();
+            // list.LastNode();
+
+        } catch (NullPointerException e) {
+
+            System.out.println(e.getMessage());
         }
 
     }
