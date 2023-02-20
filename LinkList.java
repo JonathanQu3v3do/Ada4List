@@ -10,7 +10,6 @@ public class LinkList {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
         }
-
         return first;
     }
 
@@ -37,12 +36,10 @@ public class LinkList {
             current = current.getNext();
         }
         return cont;
-
     }
 
     // 3
     public void mayorNode(double key) {
-
         Link newLink = new Link(key);
         Link previous = null;
         Link current = first;
@@ -50,13 +47,14 @@ public class LinkList {
             previous = current;
             current = current.getNext();
         }
+
         if (previous == null)
             insertFirst(key);
-        else
+        else {
+            // estos dos solo son para el else, vd?
             previous.setNext(newLink);
-
-        newLink.setNext(current);
-
+            newLink.setNext(current);
+        }
     }
 
     // 3
@@ -68,12 +66,14 @@ public class LinkList {
             previous = current;
             current = current.getNext();
         }
+
         if (previous == null)
             insertFirst(key);
-        else
+        else {
+            // estos dos solo son para el else, vd?
             previous.setNext(newLink);
-
-        newLink.setNext(current);
+            newLink.setNext(current);
+        }
     }
 
     // 4
@@ -119,18 +119,21 @@ public class LinkList {
         Link temp = first;
         boolean bandera = false;
 
+        if (isEmpty())
+            throw new NullPointerException("La lista esta vacia.");
+
         while (current.getNext() != null && bandera == false) {
             if (current.getNext().getdData() == dato)
                 bandera = true;
             else
                 current = current.getNext();
         }
-        if (current.getNext() == null && current.getdData() != dato)
+
+        if (bandera == false)
             throw new NullPointerException("No se encontro el dato.");
         else {
             temp = current.getNext();
             current.setNext(current.getNext().getNext());
-
         }
 
         return temp;
@@ -140,18 +143,20 @@ public class LinkList {
     public void deleteAt(int index) throws NullPointerException {
         Link current = first;
         if (isEmpty())
-            System.out.println("no hay elementos");
+            throw new NullPointerException("No hay elementos");
+
         if (index == 0)
             first = current.getNext();
-        for (int i = 0; current != null && i < index - 1; i++) {
-            current = current.getNext();
+        else {
+            for (int i = 0; current != null && i < index - 1; i++) {
+                current = current.getNext();
+            }
+            if (current == null || current.getNext() == null)
+                throw new NullPointerException("No existe el indice");
+
+            Link temp = current.getNext().getNext();// el nuevo siguiente
+            current.setNext(temp);
         }
-        if (current == null || current.getNext() == null)
-            throw new NullPointerException("No existe el indice");
-
-        Link temp = current.getNext().getNext();// el nuevo siguiente
-        current.setNext(temp);
-
     }
 
     // 8
@@ -165,19 +170,20 @@ public class LinkList {
         Link current = first;
         int cont = 0;
         if (isEmpty())
-            return -1;
-        else {
-            while (current != null) {
-                if (current.getdData() == value)
-                    return cont;
-                cont++;
-                current = current.getNext();
-            }
+            throw new NullPointerException("La lista esta vacia.");
+
+        while (current != null) {
+            if (current.getdData() == value)
+                return cont;
+
+            cont++;
+            current = current.getNext();
         }
 
-        throw new NullPointerException("-1 No se encontró el dato");
-
+        return -1;
     }
+
+    // 10
 
     public boolean isEmpty() {
         return (first == null);
@@ -186,7 +192,6 @@ public class LinkList {
     public void insertFirst(double dd) {
         Link newLink = new Link(dd);
         newLink.setNext(first);
-        // newLink.next = first;
         first = newLink;
     }
 
@@ -212,5 +217,4 @@ public class LinkList {
         }
         System.out.println("<--last)");
     }
-
 }
