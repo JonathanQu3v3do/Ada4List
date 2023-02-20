@@ -8,7 +8,9 @@ public class ListMain {
             list.menorNode(7);
             list.displayList();
             
-            
+            System.out.print("El primer dato de la lista es: " + list.firstNode().getdData() +"\n");
+
+            System.out.print("El ultimo dato de la lista es: " + list.LastNode().getdData() + "\n");
             
             System.out.println("el tamaño de la lista es: " + list.size());
 
@@ -22,9 +24,7 @@ public class ListMain {
             // list.LastNode();
 
         } catch (NullPointerException e) {
-
             System.out.println(e.getMessage());
         }
-
     }
 }

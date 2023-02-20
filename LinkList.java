@@ -6,26 +6,26 @@ public class LinkList {
     }
 
     // 1
-    public void firstNode() throws NullPointerException {
-        Link current = first;
+    public Link firstNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
         }
-        current.firstNode();
-
+        
+        return first;
     }
 
     // 1
-    public void LastNode() throws NullPointerException {
+    public Link LastNode() throws NullPointerException {
         Link current = first;
-        if (!isEmpty()) {
-            while (current.getNext() != null) {
-                current = current.getNext();
-            }
-            current.LastNode();
-        } else
-            throw new NullPointerException("la lista esta vacia ");
 
+        if (isEmpty()) {
+            throw new NullPointerException("la lista esta vacia ");
+        }
+
+        while (current.getNext() != null) {
+            current = current.getNext();
+        }
+        return current;
     }
 
     // 2
