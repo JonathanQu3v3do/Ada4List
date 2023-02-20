@@ -6,26 +6,26 @@ public class LinkList {
     }
 
     // 1
-    public void firstNode() throws NullPointerException {
-        Link current = first;
+    public Link firstNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
         }
-        current.firstNode();
 
+        return first;
     }
 
     // 1
-    public void LastNode() throws NullPointerException {
+    public Link lastNode() throws NullPointerException {
         Link current = first;
-        if (!isEmpty()) {
-            while (current.getNext() != null) {
-                current = current.getNext();
-            }
-            current.LastNode();
-        } else
-            throw new NullPointerException("la lista esta vacia ");
 
+        if (isEmpty()) {
+            throw new NullPointerException("la lista esta vacia ");
+        }
+
+        while (current.getNext() != null) {
+            current = current.getNext();
+        }
+        return current;
     }
 
     // 2
@@ -76,6 +76,43 @@ public class LinkList {
         newLink.setNext(current);
     }
 
+    // 4
+    public void updateNode(double datoActual, double datoNuevo) throws NullPointerException {
+        Link current = first;
+        boolean bandera = false;
+
+        if (isEmpty())
+            throw new NullPointerException("La lista esta vacia.");
+
+        while (current != null && bandera == false) {
+            if (current.getdData() == datoActual) {
+                current.setdData(datoNuevo);
+                bandera = true;
+            } else
+                current = current.getNext();
+        }
+
+        if (bandera == false)
+            throw new NullPointerException("No se encontro el dato.");
+    }
+
+    // 5
+    public void updateNodeat(int index, double datoNuevo) throws NullPointerException {
+        Link current = first;
+
+        if (isEmpty())
+            throw new NullPointerException("No hay elementos");
+
+        for (int i = 0; current != null && i < index; i++) {
+            current = current.getNext();
+        }
+
+        if (current != null)
+            current.setdData(datoNuevo);
+        else
+            throw new NullPointerException("No existe el indice");
+    }
+
     // 6
     public Link deleLink(double dato) throws NullPointerException {
         Link current = first;
@@ -119,15 +156,7 @@ public class LinkList {
 
     // 8
     public void delateAll() throws NullPointerException {
-        Link current = first;
-        if (!isEmpty()) {
-            while (current != null) {
-                first = first.getNext();
-                current = first;
-            }
-            System.out.println("Se ha eliminado con exito");
-        } else
-            System.out.println("la lista esta vacia");
+        first = null;
 
     }
 
@@ -148,10 +177,6 @@ public class LinkList {
 
         throw new NullPointerException("-1 No se encontró el dato");
 
-    }
-
-    public void replaceAt(int index) throws NullPointerException {
-       
     }
 
     public boolean isEmpty() {
