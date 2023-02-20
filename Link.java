@@ -31,13 +31,7 @@ public class Link {
         this.next = next;
     }
 
-    public void firstNode() {
-        System.out.print("El primer dato de la lista es: " + dData +"\n");
-    }
-
-    public void LastNode() {
-        System.out.print("El ultimo dato de la lista es: " + dData+ "\n");
-    }
+ 
 
 
 
