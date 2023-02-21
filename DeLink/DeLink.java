@@ -1,8 +1,10 @@
-public class Link {
-    private double dData;
-    private Link next; 
+package DeLink;
 
-    public Link(double dd ) {
+public class DeLink {
+    private double dData;
+    private DeLink next; 
+
+    public DeLink(double dd ) {
         dData = dd;
         next = null;
     }
@@ -18,15 +20,10 @@ public class Link {
         this.dData = dData;
     }
 
-    public Link getNext() {
+    public DeLink getNext() {
         return next;
     }
-    public void setNext(Link next) {
+    public void setNext(DeLink next) {
         this.next = next;
     }
-
- 
-
-
-
 }

@@ -1,12 +1,16 @@
-public class LinkList {
-    private Link first;
+package DeLink;
 
-    public LinkList() {
+public class DELinkList {
+    private DeLink first;
+    private DeLink last;
+
+    public DELinkList() {
         first = null;
+        last = null;
     }
 
     // 1
-    public Link firstNode() throws NullPointerException {
+    public DeLink firstNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
         }
@@ -14,22 +18,16 @@ public class LinkList {
     }
 
     // 1
-    public Link lastNode() throws NullPointerException {
-        Link current = first;
-
+    public DeLink lastNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
         }
-
-        while (current.getNext() != null) {
-            current = current.getNext();
-        }
-        return current;
+        return last;
     }
 
     // 2
     public int size() {
-        Link current = first;
+        DeLink current = first;
         int cont = 0;
         while (current != null) {
             cont++;
@@ -40,45 +38,44 @@ public class LinkList {
 
     // 3
     public void mayorNode(double key) {
-        Link newLink = new Link(key);
-        Link previous = null;
-        Link current = first;
+        DeLink newLink = new DeLink(key);
+        DeLink previous = null;
+        DeLink current = first;
+
         while (current != null && key < current.getdData()) {
             previous = current;
             current = current.getNext();
         }
 
-        if (previous == null)
-            insertFirst(key);
+        if (previous == null) insertFirst(key);
         else {
-            // estos dos solo son para el else, vd?
             previous.setNext(newLink);
             newLink.setNext(current);
+            if(current == null) last = newLink;
         }
     }
 
     // 3
     public void menorNode(double key) {
-        Link newLink = new Link(key);
-        Link previous = null;
-        Link current = first;
+        DeLink newLink = new DeLink(key);
+        DeLink previous = null;
+        DeLink current = first;
         while (current != null && key > current.getdData()) {
             previous = current;
             current = current.getNext();
         }
 
-        if (previous == null)
-            insertFirst(key);
+        if (previous == null) insertFirst(key);
         else {
-            // estos dos solo son para el else, vd?
             previous.setNext(newLink);
             newLink.setNext(current);
+            if(current == null) last = newLink;
         }
     }
 
     // 4
     public void updateNode(double datoActual, double datoNuevo) throws NullPointerException {
-        Link current = first;
+        DeLink current = first;
         boolean bandera = false;
 
         if (isEmpty())
@@ -97,8 +94,8 @@ public class LinkList {
     }
 
     // 5
-    public void updateNodeat(int index, double datoNuevo) throws NullPointerException {
-        Link current = first;
+    public void updateNodeAt(int index, double datoNuevo) throws NullPointerException {
+        DeLink current = first;
 
         if (isEmpty())
             throw new NullPointerException("No hay elementos");
@@ -114,9 +111,9 @@ public class LinkList {
     }
 
     // 6
-    public Link deleLink(double dato) throws NullPointerException {
-        Link current = first;
-        Link temp = first;
+    public DeLink deletLink(double dato) throws NullPointerException {
+        DeLink current = first;
+        DeLink temp = first;
         boolean bandera = false;
 
         if (isEmpty())
@@ -134,19 +131,25 @@ public class LinkList {
         else {
             temp = current.getNext();
             current.setNext(current.getNext().getNext());
+            if(current.getNext() == null) last = current;
         }
 
         return temp;
     }
 
     // 7
-    public void deleteAt(int index) throws NullPointerException {
-        Link current = first;
+    public DeLink deleteAt(int index) throws NullPointerException {
+        DeLink current = first;
+        DeLink temp = null;
+
         if (isEmpty())
             throw new NullPointerException("No hay elementos");
 
-        if (index == 0)
+        if (index == 0){
+            temp = current;
             first = current.getNext();
+            if(first == null) last = null; //solo un elemento
+        }
         else {
             for (int i = 0; current != null && i < index - 1; i++) {
                 current = current.getNext();
@@ -154,20 +157,23 @@ public class LinkList {
             if (current == null || current.getNext() == null)
                 throw new NullPointerException("No existe el indice");
 
-            Link temp = current.getNext().getNext();// el nuevo siguiente
-            current.setNext(temp);
+            temp = current.getNext();// el nuevo siguiente
+            current.setNext(temp.getNext());
+            if(current.getNext() == null) last = current; //se eliminó el último elementos
         }
+
+        return temp;
     }
 
     // 8
-    public void delateAll() throws NullPointerException {
+    public void deleteAll() throws NullPointerException {
         first = null;
-
+        last = null;
     }
 
     // 9
     public int find(double value) throws NullPointerException {
-        Link current = first;
+        DeLink current = first;
         int cont = 0;
         if (isEmpty())
             throw new NullPointerException("La lista esta vacia.");
@@ -183,37 +189,69 @@ public class LinkList {
         return -1;
     }
 
-    // 10
-
+    
     public boolean isEmpty() {
         return (first == null);
     }
 
     public void insertFirst(double dd) {
-        Link newLink = new Link(dd);
+        DeLink newLink = new DeLink(dd);
+        
+        if(isEmpty()) last = newLink;
+
         newLink.setNext(first);
         first = newLink;
     }
 
-    public Link deleteFirst() {
-        Link temp = null;
-        if (!isEmpty()) {
-            temp = first;
-            first = first.getNext();
-            // first = first.next;
+    public DeLink deleteFirst() throws NullPointerException{
+        DeLink temp = first;
+
+        if (isEmpty()) {
+            throw new NullPointerException("La lista esta vacia.");
         }
+        
+        if(first.getNext() == null) last = null;
+        
+        first = first.getNext();
+        return temp;
+    }
+
+    public void insertLast(double dato) {
+        DeLink newLink = new DeLink(dato);
+        DeLink current = first;
+
+        if(!isEmpty()){
+            while(current.getNext() != null) {
+                current = current.getNext(); 
+            }
+            current.setNext(newLink);
+        }
+        else first = newLink;
+
+        last = newLink;
+    }
+
+    public DeLink deletetLast() {
+        DeLink current = first;
+        DeLink temp = first;
+        
+        while(current.getNext().getNext() != null) {
+            current = current.getNext();
+        }
+        temp = current.getNext();
+        current.setNext(null);
+        last = current;
+
         return temp;
     }
 
     public void displayList() {
         System.out.print("List (first--> ");
-        Link current = first;
+        DeLink current = first;
 
-        // Link current = last;
         while (current != null) {
             current.displayLink();
             current = current.getNext();
-            // current = current.next;
         }
         System.out.println("<--last)");
     }
