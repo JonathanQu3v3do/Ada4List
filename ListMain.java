@@ -1,6 +1,6 @@
 public class ListMain {
     public static void main(String[] args) throws NullPointerException {
-        LinkList list = new LinkList();
+        LinkList<Integer> list = new LinkList<Integer>();
         try {
             list.insertFirst(8);
             list.menorNode(6);
@@ -23,11 +23,8 @@ public class ListMain {
             list.updateNodeat(0, 2);
             list.displayList();
 
-            // list.deleLink(7);
-            // list.displayList();
-
-            // list.firstNode();
-            // list.LastNode();
+            list.delateAll();
+            list.displayList();
 
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
