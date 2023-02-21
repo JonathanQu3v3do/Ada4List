@@ -1,6 +1,8 @@
-public class ListMain {
+package DeLink;
+
+public class DeListMain {
     public static void main(String[] args) throws NullPointerException {
-        LinkList<Integer> list = new LinkList<Integer>();
+        DELinkList list = new DELinkList();
         try {
             list.insertFirst(8);
             list.menorNode(6);
@@ -20,10 +22,14 @@ public class ListMain {
             list.updateNode(8, 9);
             list.displayList();
 
-            list.updateNodeat(0, 2);
+            list.updateNodeAt(0, 2);
             list.displayList();
 
-            list.delateAll();
+            list.deletLink(10);
+            list.displayList();
+            System.out.println("ultimo: " + list.lastNode().getdData());
+
+            list.deleteAll();
             list.displayList();
 
         } catch (NullPointerException e) {

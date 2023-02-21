@@ -1,3 +1,5 @@
+package Link;
+
 public class Link<T> {
     private T dData;
     private Link<T> next;
