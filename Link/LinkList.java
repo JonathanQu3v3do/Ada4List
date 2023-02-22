@@ -1,6 +1,6 @@
 package Link;
 
-public class LinkList<T> {
+public class LinkList<T extends Comparable<T>> {
     private Link<T> first;
 
     public LinkList() {
@@ -42,11 +42,13 @@ public class LinkList<T> {
 
     // 3
     public void mayorNode(T key) {
+
         Link<T> newLink = new Link<T>(key);
         Link<T> previous = null;
         Link<T> current = first;
 
-        while (current != null && key < current.getdData()) {
+        // key < current.getdData()
+        while (current != null && key.compareTo(current.getdData()) < 0) {
             previous = current;
             current = current.getNext();
         }
@@ -66,7 +68,7 @@ public class LinkList<T> {
         Link<T> previous = null;
         Link<T> current = first;
 
-        while (current != null && key > current.getdData()) {
+        while (current != null && key.compareTo(current.getdData())>0) {
             previous = current;
             current = current.getNext();
         }
@@ -189,7 +191,6 @@ public class LinkList<T> {
         return -1;
     }
 
-    
     public boolean isEmpty() {
         return (first == null);
     }
