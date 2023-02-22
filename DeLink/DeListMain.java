@@ -2,8 +2,19 @@ package DeLink;
 
 public class DeListMain {
     public static void main(String[] args) throws NullPointerException {
-        DELinkList list = new DELinkList();
+        DELinkList<Integer> list = new DELinkList<Integer>();
+        DELinkList<String> list2 = new DELinkList<String>();
         try {
+            list2.mayorNode("a");
+            list2.mayorNode("z");
+            list2.mayorNode("c");
+            list2.displayList();
+            
+            System.out.print("El primer dato de la lista es: " + list2.firstNode().getdData() +"\n");
+            System.out.print("El ultimo dato de la lista es: " + list2.lastNode().getdData() + "\n");
+            System.out.println("el tamaño de la lista es: " + list2.size());
+
+
             list.insertFirst(8);
             list.menorNode(6);
             list.menorNode(10);

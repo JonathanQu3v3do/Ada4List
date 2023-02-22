@@ -1,8 +1,8 @@
 package DoublyLink;
 
-public class DoublyLinkedList {
-    private DoublyLink first;
-    private DoublyLink last;
+public class DoublyLinkedList<T extends Comparable<T>> {
+    private DoublyLink<T> first;
+    private DoublyLink<T> last;
 
     public DoublyLinkedList() {
         first = null;
@@ -10,7 +10,7 @@ public class DoublyLinkedList {
     }
 
     // 1
-    public DoublyLink firstNode() throws NullPointerException {
+    public DoublyLink<T> firstNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
         }
@@ -18,7 +18,7 @@ public class DoublyLinkedList {
     }
 
     // 1
-    public DoublyLink lastNode() throws NullPointerException {
+    public DoublyLink<T> lastNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
         }
@@ -27,7 +27,7 @@ public class DoublyLinkedList {
 
     // 2
     public int size() {
-        DoublyLink current = first;
+        DoublyLink<T> current = first;
         int cont = 0;
         while (current != null) {
             cont++;
@@ -37,17 +37,18 @@ public class DoublyLinkedList {
     }
 
     // 3
-    public void mayorNode(double key) {
-        DoublyLink newLink = new DoublyLink(key);
-        DoublyLink previous = null;
-        DoublyLink current = first;
+    public void mayorNode(T key) {
+        DoublyLink<T> newLink = new DoublyLink<T>(key);
+        DoublyLink<T> previous = null;
+        DoublyLink<T> current = first;
 
-        while (current != null && key < current.getdData()) {
+        while (current != null && key.compareTo(current.getdData()) < 0) {
             previous = current;
             current = current.getNext();
         }
 
-        if (previous == null) insertFirst(key);
+        if (previous == null)
+            insertFirst(key);
         else {
             previous.setNext(newLink);
             newLink.setPrevious(previous);
@@ -58,28 +59,33 @@ public class DoublyLinkedList {
     }
 
     // 3
-    public void menorNode(double key) {
-        DoublyLink newLink = new DoublyLink(key);
-        DoublyLink previous = null;
-        DoublyLink current = first;
-        while (current != null && key > current.getdData()) {
-            previous = current;
-            current = current.getNext();
-        }
+    public void menorNode(T key) {
+        DoublyLink<T> newLink = new DoublyLink<T>(key);
+        DoublyLink<T> previous = null;
+        DoublyLink<T> current = first;
 
-        if (previous == null) insertFirst(key);
-        else {
-            previous.setNext(newLink);
-            newLink.setPrevious(previous);
-            newLink.setNext(current);
-            if(current == null) last = newLink;
-            else current.setPrevious(newLink);
+        if(isEmpty()) insertFirst(key);
+        else{
+            while (current != null && key.compareTo(current.getdData()) > 0) {
+                previous = current;
+                current = current.getNext();
+            }
+
+            if (previous == null)
+                insertFirst(key);
+            else {
+                previous.setNext(newLink);
+                newLink.setPrevious(previous);
+                newLink.setNext(current);
+                if(current == null) last = newLink;
+                else current.setPrevious(newLink);
+            }
         }
     }
 
     // 4
-    public void updateNode(double datoActual, double datoNuevo) throws NullPointerException {
-        DoublyLink current = first;
+    public void updateNode(T datoActual, T datoNuevo) throws NullPointerException {
+        DoublyLink<T> current = first;
         boolean bandera = false;
 
         if (isEmpty())
@@ -98,8 +104,8 @@ public class DoublyLinkedList {
     }
 
     // 5
-    public void updateNodeAt(int index, double datoNuevo) throws NullPointerException {
-        DoublyLink current = first;
+    public void updateNodeAt(int index, T datoNuevo) throws NullPointerException {
+        DoublyLink<T> current = first;
 
         if (isEmpty())
             throw new NullPointerException("No hay elementos");
@@ -115,9 +121,9 @@ public class DoublyLinkedList {
     }
 
     // 6
-    public DoublyLink deletLink(double dato) throws NullPointerException {
-        DoublyLink current = first;
-        DoublyLink temp = first;
+    public DoublyLink<T> deletLink(T dato) throws NullPointerException {
+        DoublyLink<T> current = first;
+        DoublyLink<T> temp = first;
         boolean bandera = false;
 
         if (isEmpty())
@@ -143,9 +149,9 @@ public class DoublyLinkedList {
     }
 
     // 7
-    public DoublyLink deleteAt(int index) throws NullPointerException {
-        DoublyLink current = first;
-        DoublyLink temp = null;
+    public DoublyLink<T> deleteAt(int index) throws NullPointerException {
+        DoublyLink<T> current = first;
+        DoublyLink<T> temp = null;
 
         if (isEmpty())
             throw new NullPointerException("No hay elementos");
@@ -179,8 +185,8 @@ public class DoublyLinkedList {
     }
 
     // 9
-    public int find(double value) throws NullPointerException {
-        DoublyLink current = first;
+    public int find(T value) throws NullPointerException {
+        DoublyLink<T> current = first;
         int cont = 0;
         if (isEmpty())
             throw new NullPointerException("La lista esta vacia.");
@@ -201,8 +207,8 @@ public class DoublyLinkedList {
         return (first == null);
     }
 
-    public void insertFirst(double dd) {
-        DoublyLink newLink = new DoublyLink(dd);
+    public void insertFirst(T dd) {
+        DoublyLink<T> newLink = new DoublyLink<T>(dd);
         
         if(isEmpty()) last = newLink;
 
@@ -210,8 +216,8 @@ public class DoublyLinkedList {
         first = newLink;
     }
 
-    public DoublyLink deleteFirst() throws NullPointerException{
-        DoublyLink temp = first;
+    public DoublyLink<T> deleteFirst() throws NullPointerException{
+        DoublyLink<T> temp = first;
 
         if (isEmpty()) {
             throw new NullPointerException("La lista esta vacia.");
@@ -224,18 +230,18 @@ public class DoublyLinkedList {
         return temp;
     }
 
-    public void insertLast(double dato) {
-        DoublyLink newLink = new DoublyLink(dato);
-        DoublyLink current = last;
+    public void insertLast(T dato) {
+        DoublyLink<T> newLink = new DoublyLink<T>(dato);
+        DoublyLink<T> current = last;
 
         current.setNext(newLink);
         newLink.setPrevious(current);
         last = newLink;
     }
 
-    public DoublyLink deletetLast() {
-        DoublyLink current = last.getPrevious();
-        DoublyLink temp = last;
+    public DoublyLink<T> deletetLast() {
+        DoublyLink<T> current = last.getPrevious();
+        DoublyLink<T> temp = last;
 
         last = current;
         current.setNext(null);
@@ -245,7 +251,7 @@ public class DoublyLinkedList {
 
     public void displayList() {
         System.out.print("List (first--> ");
-        DoublyLink current = first;
+        DoublyLink<T> current = first;
 
         while (current != null) {
             current.displayLink();

@@ -11,24 +11,28 @@ public class ListMain {
             list2.mayorNode("c");
             list2.displayList();
 
+            list.menorNode(8);
+            list.menorNode(19);
+            list.menorNode(12);
+            list.menorNode(6);
             
             System.out.print("El primer dato de la lista es: " + list2.firstNode().getdData() +"\n");
-
             System.out.print("El ultimo dato de la lista es: " + list2.lastNode().getdData() + "\n");
-            
             System.out.println("el tamaño de la lista es: " + list2.size());
 
-            //int value = 1;
-            //System.out.println("El valor " + value + " esta en la posicion: " +list2.find(value));
+            list.displayList();
+            System.out.println("El valor 1 esta en la posicion: " +list.find(1));
 
-           // list.updateNode(8, 9);
-            //list.displayList();
+            list.updateNode(8, 9);
+            list.displayList();
 
-            //list.updateNodeat(0, 2);
-            //list.displayList();
+            list.updateNodeat(0, 2);
+            list.displayList();
 
-            //list.deleteAll();
-            //list.displayList();
+            list.deleteAll();
+            list.displayList();
+
+            list.lastNode();
 
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());

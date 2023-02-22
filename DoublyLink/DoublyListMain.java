@@ -2,8 +2,21 @@ package DoublyLink;
 
 public class DoublyListMain {
     public static void main(String[] args) throws NullPointerException {
-        DoublyLinkedList list = new DoublyLinkedList();
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
+        DoublyLinkedList<String> list2 = new DoublyLinkedList<String>();
         try {
+            list2.mayorNode("a");
+            list2.mayorNode("z");
+            list2.mayorNode("c");
+            list2.displayList();
+            list2.updateNodeAt(2, "t");
+            list2.displayList();
+
+            System.out.print("El primer dato de la lista es: " + list2.firstNode().getdData() +"\n");
+            System.out.print("El ultimo dato de la lista es: " + list2.lastNode().getdData() + "\n");
+            System.out.println("el tamaño de la lista es: " + list2.size());
+
+            
             list.insertFirst(8);
             list.insertLast(9);
             list.menorNode(6);

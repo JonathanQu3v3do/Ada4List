@@ -1,8 +1,8 @@
 package DeLink;
 
-public class DELinkList {
-    private DeLink first;
-    private DeLink last;
+public class DELinkList<T extends Comparable<T>> {
+    private DeLink<T> first;
+    private DeLink<T> last;
 
     public DELinkList() {
         first = null;
@@ -10,7 +10,7 @@ public class DELinkList {
     }
 
     // 1
-    public DeLink firstNode() throws NullPointerException {
+    public DeLink<T> firstNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
         }
@@ -18,7 +18,7 @@ public class DELinkList {
     }
 
     // 1
-    public DeLink lastNode() throws NullPointerException {
+    public DeLink<T> lastNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
         }
@@ -27,7 +27,7 @@ public class DELinkList {
 
     // 2
     public int size() {
-        DeLink current = first;
+        DeLink<T> current = first;
         int cont = 0;
         while (current != null) {
             cont++;
@@ -37,17 +37,18 @@ public class DELinkList {
     }
 
     // 3
-    public void mayorNode(double key) {
-        DeLink newLink = new DeLink(key);
-        DeLink previous = null;
-        DeLink current = first;
-
-        while (current != null && key < current.getdData()) {
+    public void mayorNode(T key) {
+        DeLink<T> newLink = new DeLink<T>(key);
+        DeLink<T> previous = null;
+        DeLink<T> current = first;
+        
+        while (current != null && key.compareTo(current.getdData()) < 0) {
             previous = current;
             current = current.getNext();
         }
 
-        if (previous == null) insertFirst(key);
+        if (previous == null)
+            insertFirst(key);
         else {
             previous.setNext(newLink);
             newLink.setNext(current);
@@ -56,16 +57,18 @@ public class DELinkList {
     }
 
     // 3
-    public void menorNode(double key) {
-        DeLink newLink = new DeLink(key);
-        DeLink previous = null;
-        DeLink current = first;
-        while (current != null && key > current.getdData()) {
+    public void menorNode(T key) {
+        DeLink<T> newLink = new DeLink<T>(key);
+        DeLink<T> previous = null;
+        DeLink<T> current = first;
+        
+        while (current != null && key.compareTo(current.getdData()) > 0) {
             previous = current;
             current = current.getNext();
         }
 
-        if (previous == null) insertFirst(key);
+        if (previous == null)
+            insertFirst(key);
         else {
             previous.setNext(newLink);
             newLink.setNext(current);
@@ -74,8 +77,8 @@ public class DELinkList {
     }
 
     // 4
-    public void updateNode(double datoActual, double datoNuevo) throws NullPointerException {
-        DeLink current = first;
+    public void updateNode(T datoActual, T datoNuevo) throws NullPointerException {
+        DeLink<T> current = first;
         boolean bandera = false;
 
         if (isEmpty())
@@ -94,8 +97,8 @@ public class DELinkList {
     }
 
     // 5
-    public void updateNodeAt(int index, double datoNuevo) throws NullPointerException {
-        DeLink current = first;
+    public void updateNodeAt(int index, T datoNuevo) throws NullPointerException {
+        DeLink<T> current = first;
 
         if (isEmpty())
             throw new NullPointerException("No hay elementos");
@@ -111,9 +114,9 @@ public class DELinkList {
     }
 
     // 6
-    public DeLink deletLink(double dato) throws NullPointerException {
-        DeLink current = first;
-        DeLink temp = first;
+    public DeLink<T> deletLink(T dato) throws NullPointerException {
+        DeLink<T> current = first;
+        DeLink<T> temp = first;
         boolean bandera = false;
 
         if (isEmpty())
@@ -138,9 +141,9 @@ public class DELinkList {
     }
 
     // 7
-    public DeLink deleteAt(int index) throws NullPointerException {
-        DeLink current = first;
-        DeLink temp = null;
+    public DeLink<T> deleteAt(int index) throws NullPointerException {
+        DeLink<T> current = first;
+        DeLink<T> temp = null;
 
         if (isEmpty())
             throw new NullPointerException("No hay elementos");
@@ -172,8 +175,8 @@ public class DELinkList {
     }
 
     // 9
-    public int find(double value) throws NullPointerException {
-        DeLink current = first;
+    public int find(T value) throws NullPointerException {
+        DeLink<T> current = first;
         int cont = 0;
         if (isEmpty())
             throw new NullPointerException("La lista esta vacia.");
@@ -194,8 +197,8 @@ public class DELinkList {
         return (first == null);
     }
 
-    public void insertFirst(double dd) {
-        DeLink newLink = new DeLink(dd);
+    public void insertFirst(T dd) {
+        DeLink<T> newLink = new DeLink<T>(dd);
         
         if(isEmpty()) last = newLink;
 
@@ -203,8 +206,8 @@ public class DELinkList {
         first = newLink;
     }
 
-    public DeLink deleteFirst() throws NullPointerException{
-        DeLink temp = first;
+    public DeLink<T> deleteFirst() throws NullPointerException{
+        DeLink<T> temp = first;
 
         if (isEmpty()) {
             throw new NullPointerException("La lista esta vacia.");
@@ -216,9 +219,9 @@ public class DELinkList {
         return temp;
     }
 
-    public void insertLast(double dato) {
-        DeLink newLink = new DeLink(dato);
-        DeLink current = first;
+    public void insertLast(T dato) {
+        DeLink<T> newLink = new DeLink<T>(dato);
+        DeLink<T> current = first;
 
         if(!isEmpty()){
             while(current.getNext() != null) {
@@ -231,9 +234,9 @@ public class DELinkList {
         last = newLink;
     }
 
-    public DeLink deletetLast() {
-        DeLink current = first;
-        DeLink temp = first;
+    public DeLink<T> deletetLast() {
+        DeLink<T> current = first;
+        DeLink<T> temp = first;
         
         while(current.getNext().getNext() != null) {
             current = current.getNext();
@@ -247,7 +250,7 @@ public class DELinkList {
 
     public void displayList() {
         System.out.print("List (first--> ");
-        DeLink current = first;
+        DeLink<T> current = first;
 
         while (current != null) {
             current.displayLink();

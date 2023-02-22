@@ -47,7 +47,6 @@ public class LinkList<T extends Comparable<T>> {
         Link<T> previous = null;
         Link<T> current = first;
 
-        // key < current.getdData()
         while (current != null && key.compareTo(current.getdData()) < 0) {
             previous = current;
             current = current.getNext();
@@ -56,7 +55,6 @@ public class LinkList<T extends Comparable<T>> {
         if (previous == null)
             insertFirst(key);
         else {
-            // estos dos solo son para el else, vd?
             previous.setNext(newLink);
             newLink.setNext(current);
         }
@@ -76,7 +74,6 @@ public class LinkList<T extends Comparable<T>> {
         if (previous == null)
             insertFirst(key);
         else {
-            // estos dos solo son para el else, vd?
             previous.setNext(newLink);
             newLink.setNext(current);
         }

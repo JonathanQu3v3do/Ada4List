@@ -1,29 +1,29 @@
 package DeLink;
 
-public class DeLink {
-    private double dData;
-    private DeLink next; 
+public class DeLink<T> {
+    private T dData;
+    private DeLink<T> next; 
 
-    public DeLink(double dd ) {
+    public DeLink(T dd ) {
         dData = dd;
         next = null;
     }
 
     public void displayLink() {
-        System.out.print("{" + dData + "} ");
+        System.out.print("{" + getdData() + "} ");
     }
 
-    public double getdData() {
+    public T getdData() {
         return dData;
     }
-    public void setdData(double dData) {
+    public void setdData(T dData) {
         this.dData = dData;
     }
 
-    public DeLink getNext() {
+    public DeLink<T> getNext() {
         return next;
     }
-    public void setNext(DeLink next) {
+    public void setNext(DeLink<T> next) {
         this.next = next;
     }
 }

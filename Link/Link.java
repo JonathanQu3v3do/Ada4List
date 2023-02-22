@@ -10,7 +10,7 @@ public class Link<T> {
     }
 
     public void displayLink() {
-        System.out.print("{" + dData + "} ");
+        System.out.print("{" + getdData() + "} ");
     }
 
     public T getdData() {
