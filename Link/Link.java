@@ -2,7 +2,6 @@ package Link;
 /**
  * La clase Link representa cada Nodo de la Lista.
  * @author: Andrea Torres y Jonathan Quevedo
- * @param <T> tipo de dato que guarda el nodo
  * @see <https://github.com/JonathanQu3v3do/Ada4List.git>
  */
 public class Link<T> {
@@ -10,8 +9,8 @@ public class Link<T> {
     private Link<T> next; // referencia al siguiente nodo de la lista
 
     /**
-     * Constructor para Link
-     * @param dd El parámetro dd contiene los datos de un nodo
+     * Constructor para Link con referencia null al siguiente nodo.
+     * @param dd contiene los datos de un nodo
      */
     public Link(T dd) {
         dData = dd;
@@ -19,7 +18,7 @@ public class Link<T> {
     }
 
     /**
-     * Método que imrpime el contenido del nodo
+     * Imrpime el contenido del nodo
      */
     public void displayLink() {
         System.out.print("{" + getdData() + "} ");
@@ -41,7 +40,7 @@ public class Link<T> {
     }
 
     /**
-     * Devuelve la referencia al siguiente nodo de la lista
+     * Devuelve la referencia al siguiente nodo de la lista.
      * @return Link<T> referencia al siguiente nodo de la lista
      */
     public Link<T> getNext() {

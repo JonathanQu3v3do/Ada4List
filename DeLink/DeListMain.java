@@ -1,7 +1,10 @@
 package DeLink;
-
+/**
+ * Esta es la clase DeListMain del programa, ejecuta listas de datos.
+ * @author: Andrea Torres y Jonathan Quevedo
+ * @see <https://github.com/JonathanQu3v3do/Ada4List.git>
+ */
 public class DeListMain {
-    
     /** 
      * @param args
      * @throws NullPointerException

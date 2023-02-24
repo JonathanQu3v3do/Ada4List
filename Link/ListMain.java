@@ -1,21 +1,10 @@
 package Link;
-/** Maneja listas de datos.
- * @author Jonathan Quevedo
- * @author Andrea Torres
-*/
+/**
+ * Esta es la clase ListMain del programa, ejecuta listas de datos.
+ * @author: Andrea Torres y Jonathan Quevedo
+ * @see <https://github.com/JonathanQu3v3do/Ada4List.git>
+ */
 public class ListMain {
-    /**
-     * 
-     * Esta es la clase ListMain del programa
-     * 
-     * 
-     * @author: Andrea Torres y Jonathan Quevedo
-     * 
-     * 
-     * @see <https://github.com/JonathanQu3v3do/Ada4List.git>
-     * 
-     */
-
     /**
      * @param args
      * @throws NullPointerException
@@ -74,4 +63,4 @@ public class ListMain {
             System.out.println(e.getMessage());
         }
     }
-} //Cierre de la clase 
+}

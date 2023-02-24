@@ -1,37 +1,24 @@
 package Link;
-
 /**
- * 
- * Esta clase solo tiene 1 atributo: first, que hace referencia al primer
- * elemento de la Lista.
- * La clase LinkList cuenta con varios metodos que hacen diferentes operaciones
- * que se adaptan al manejo
- * de una lista enlazada
- * 
+ * Esta clase maneja la lista ligada simple.
  * @author: Andrea Torres y Jonathan Quevedo
- * 
- * 
  * @see <https://github.com/JonathanQu3v3do/Ada4List.git>
- * 
  */
-
 public class LinkList<T extends Comparable<T>> {
-    private Link<T> first;
+    private Link<T> first; //hace referencia al primer elemento de la Lista.
 
     /**
-    
-    Constructs a new LinkList object with a null reference to the first node.
-    */
+     * Constructor para LinkList con referencia null al primer nodo de la lista.
+     */
     public LinkList() {
         first = null;
     }
 
     /**
+     * Devuelve el primer elemento de la lista.
      * @return Link<T>
      * @throws NullPointerException
-     *                              Método que devuelva el primer elemento
      */
-    // 1
     public Link<T> firstNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
@@ -40,11 +27,10 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     /**
+     * Devuelve el ultimo elemento de la lista.
      * @return Link<T>
      * @throws NullPointerException
-     *                              Método que devuelva el último elemento
      */
-    // 1
     public Link<T> lastNode() throws NullPointerException {
         Link<T> current = first;
 
@@ -59,10 +45,9 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     /**
-     * @return int
-     *         Método que devuelva el tamaño de la lista
+     * Devuelve el tamaño de la lista.
+     * @return int cantidad de nodos.
      */
-    // 2
     public int size() {
         Link<T> current = first;
         int cont = 0;
@@ -74,10 +59,9 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     /**
-     * @param key
-     *            metodo para insertar un nodo y ordenar de mayor a menor
+     * Inserta un nuevo nodo en la lista en orden decreciente.
+     * @param key dato para el nuevo nodo
      */
-    // 3
     public void mayorNode(T key) {
 
         Link<T> newLink = new Link<T>(key);
@@ -98,10 +82,9 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     /**
-     * @param key
-     *            metodo para insertar un nodo y ordenar de menor a mayor
+     * Inserta un nuevo nodo en la lista en orden creciente.
+     * @param key dato para el nuevo nodo
      */
-    // 3
     public void menorNode(T key) {
         Link<T> newLink = new Link<T>(key);
         Link<T> previous = null;
@@ -121,12 +104,11 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     /**
-     * @param datoActual
-     * @param datoNuevo
+     * Actualiza el dato de un nodo con un dato nuevo.
+     * @param datoActual el dato del nodo que se busca en la lista
+     * @param datoNuevo el nuevo dato por el que se cambia datoActual
      * @throws NullPointerException
-     *                              metodo para actualizar el dato de un nodo
      */
-    // 4
     public void updateNode(T datoActual, T datoNuevo) throws NullPointerException {
         Link<T> current = first;
         boolean bandera = false;
@@ -147,12 +129,11 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     /**
-     * @param index
-     * @param datoNuevo
+     * Actualiza el dato de un nodo, busca el nodo por posicion
+     * @param index posicion del nodo por actualizar
+     * @param datoNuevo dato por el que se cambia el dato del nodo
      * @throws NullPointerException
-     *                              metodo para actualizar el dato de un nodo
      */
-    // 5
     public void updateNodeat(int index, T datoNuevo) throws NullPointerException {
         Link<T> current = first;
 
@@ -170,12 +151,11 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     /**
+     * Elimina un elemento proporcionado.
      * @param dato
      * @return Link<T>
      * @throws NullPointerException
-     *                              metodo para eliminar un elemento proporcionado
      */
-    // 6
     public Link<T> deleLink(T dato) throws NullPointerException {
         Link<T> current = first;
         Link<T> temp = first;
@@ -202,12 +182,10 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     /**
-     * @param index
+     * Elimina el nodo de una posición en la lista.
+     * @param index posicion del nodo por eliminar
      * @throws NullPointerException
-     *                              Método para eliminar un elemento de una posición
-     *                              en la lista.
      */
-    // 7
     public void deleteAt(int index) throws NullPointerException {
         Link<T> current = first;
 
@@ -229,22 +207,19 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     /**
+     * Elimina todos los datos de la lista.
      * @throws NullPointerException
-     *                              metodo para limpiar la lista
      */
-    // 8
     public void deleteAll() throws NullPointerException {
         first = null;
-
     }
 
     /**
-     * @param value
-     * @return int
+     * Busca un nodo en la lista y devuelve su posicion.
+     * @param value dato del nodo que se busca
+     * @return int posicion del nodo en la lista
      * @throws NullPointerException
-     *                              Método para hacer una búsqueda de un elemento
      */
-    // 9
     public int find(T value) throws NullPointerException {
         Link<T> current = first;
         int cont = 0;
@@ -263,17 +238,18 @@ public class LinkList<T extends Comparable<T>> {
         return -1;
     }
 
+    
     /**
+     * Comprueba si la lista esta vacia.
      * @return boolean
-     *         metodo que comprueba si la lista esta vacia
      */
     public boolean isEmpty() {
         return (first == null);
     }
 
     /**
-     * @param dd
-     *           metodo que inserta un elemento al inicio de la lista
+     * Inserta un elemento al inicio de la lista.
+     * @param dd dato del nodo por insertar
      */
     public void insertFirst(T dd) {
         Link<T> newLink = new Link<T>(dd);
@@ -282,18 +258,24 @@ public class LinkList<T extends Comparable<T>> {
     }
 
     /**
+     * Elimina el primer elemento de la lista.
      * @return Link<T>
-     *         metodo que elimina el primer elemento de la lista
+     * @throws NullPointerException
      */
-    public Link<T> deleteFirst() {
+    public Link<T> deleteFirst() throws NullPointerException{
         Link<T> temp = null;
-        if (!isEmpty()) {
-            temp = first;
-            first = first.getNext();
-        }
+
+        if(isEmpty())
+            throw new NullPointerException("La lista esta vacia.");
+        
+        temp = first;
+        first = first.getNext();
         return temp;
     }
 
+    /**
+     * Imrpime el contenido de la lista.
+     */
     public void displayList() {
         System.out.print("List (first--> ");
         Link<T> current = first;
@@ -304,4 +286,4 @@ public class LinkList<T extends Comparable<T>> {
         }
         System.out.println("<--last)");
     }
-}//Cierre de la clase 
+}

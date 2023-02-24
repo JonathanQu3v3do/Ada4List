@@ -1,20 +1,26 @@
 package DoublyLink;
-
+/**
+ * Esta clase maneja la lista doblemente ligada.
+ * @author: Andrea Torres y Jonathan Quevedo
+ * @see <https://github.com/JonathanQu3v3do/Ada4List.git>
+ */
 public class DoublyLinkedList<T extends Comparable<T>> {
-    private DoublyLink<T> first;
-    private DoublyLink<T> last;
+    private DoublyLink<T> first; //hace referencia al primer elemento de la Lista.
+    private DoublyLink<T> last; //hace referencia al ultimo elemento de la Lista.
 
+    /**
+     * Constructor para DoublyLinkedList con referencia null al primer y ultimo nodo de la lista.
+     */
     public DoublyLinkedList() {
         first = null;
         last = null;
     }
 
-    
-    /** 
+    /**
+     * Devuelve el primer elemento de la lista.
      * @return DoublyLink<T>
      * @throws NullPointerException
      */
-    // 1
     public DoublyLink<T> firstNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
@@ -22,12 +28,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         return first;
     }
 
-    
-    /** 
+    /**
+     * Devuelve el ultimo elemento de la lista.
      * @return DoublyLink<T>
      * @throws NullPointerException
      */
-    // 1
     public DoublyLink<T> lastNode() throws NullPointerException {
         if (isEmpty()) {
             throw new NullPointerException("la lista esta vacia ");
@@ -35,7 +40,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         return last;
     }
 
-    // 2
+    /**
+     * Devuelve el tamaño de la lista.
+     * @return int cantidad de nodos.
+     */
     public int size() {
         DoublyLink<T> current = first;
         int cont = 0;
@@ -46,7 +54,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         return cont;
     }
 
-    // 3
+    /**
+     * Inserta un nuevo nodo en la lista en orden decreciente.
+     * @param key dato para el nuevo nodo
+     */
     public void mayorNode(T key) {
         DoublyLink<T> newLink = new DoublyLink<T>(key);
         DoublyLink<T> previous = null;
@@ -68,7 +79,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
     }
 
-    // 3
+    /**
+     * Inserta un nuevo nodo en la lista en orden creciente.
+     * @param key dato para el nuevo nodo
+     */
     public void menorNode(T key) {
         DoublyLink<T> newLink = new DoublyLink<T>(key);
         DoublyLink<T> previous = null;
@@ -93,7 +107,12 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
     }
 
-    // 4
+    /**
+     * Actualiza el dato de un nodo con un dato nuevo.
+     * @param datoActual el dato del nodo que se busca en la lista
+     * @param datoNuevo el nuevo dato por el que se cambia datoActual
+     * @throws NullPointerException
+     */
     public void updateNode(T datoActual, T datoNuevo) throws NullPointerException {
         DoublyLink<T> current = first;
         boolean bandera = false;
@@ -113,7 +132,12 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             throw new NullPointerException("No se encontro el dato.");
     }
 
-    // 5
+    /**
+     * Actualiza el dato de un nodo, busca el nodo por posicion.
+     * @param index posicion del nodo por actualizar
+     * @param datoNuevo dato por el que se cambia el dato del nodo
+     * @throws NullPointerException
+     */
     public void updateNodeAt(int index, T datoNuevo) throws NullPointerException {
         DoublyLink<T> current = first;
 
@@ -130,7 +154,12 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             throw new NullPointerException("No existe el indice");
     }
 
-    // 6
+    /**
+     * Elimina un elemento proporcionado.
+     * @param dato dato del nodo que se va a eliminar
+     * @return DoublyLink<T>
+     * @throws NullPointerException
+     */
     public DoublyLink<T> deletLink(T dato) throws NullPointerException {
         DoublyLink<T> current = first;
         DoublyLink<T> temp = first;
@@ -158,7 +187,12 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         return temp;
     }
 
-    // 7
+    /** 
+     * Elimina el nodo de una posición en la lista.
+     * @param index posicion del nodo por eliminar
+     * @return DoublyLink<T>
+     * @throws NullPointerException
+     */
     public DoublyLink<T> deleteAt(int index) throws NullPointerException {
         DoublyLink<T> current = first;
         DoublyLink<T> temp = null;
@@ -188,13 +222,21 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         return temp;
     }
 
-    // 8
+    /** 
+     * Elimina todos los datos de la lista.
+     * @throws NullPointerException
+     */
     public void deleteAll() throws NullPointerException {
         first = null;
         last = null;
     }
 
-    // 9
+    /**
+     * Busca un nodo en la lista y devuelve su posicion.
+     * @param value dato del nodo que se busca
+     * @return int posicion del nodo en la lista
+     * @throws NullPointerException
+     */
     public int find(T value) throws NullPointerException {
         DoublyLink<T> current = first;
         int cont = 0;
@@ -213,10 +255,18 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     }
 
     
+    /**
+     * Comprueba si la lista esta vacia.
+     * @return boolean
+     */
     public boolean isEmpty() {
         return (first == null);
     }
 
+    /**
+     * Inserta un elemento al inicio de la lista.
+     * @param dd dato del nodo por insertar
+     */
     public void insertFirst(T dd) {
         DoublyLink<T> newLink = new DoublyLink<T>(dd);
         
@@ -226,6 +276,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         first = newLink;
     }
 
+    /** 
+     * Elimina el primer elemento de la lista.
+     * @return DoublyLink<T>
+     * @throws NullPointerException
+     */
     public DoublyLink<T> deleteFirst() throws NullPointerException{
         DoublyLink<T> temp = first;
 
@@ -240,6 +295,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         return temp;
     }
 
+    /** 
+     * Inserta un elemento al final de la lista.
+     * @param dato dato del nodo por insertar
+     */
     public void insertLast(T dato) {
         DoublyLink<T> newLink = new DoublyLink<T>(dato);
         DoublyLink<T> current = last;
@@ -249,9 +308,17 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         last = newLink;
     }
 
-    public DoublyLink<T> deletetLast() {
+    /** 
+     * Elimina el ultimo elemento de la lista.
+     * @return DoublyLink<T>
+     * @throws NullPointerException
+     */
+    public DoublyLink<T> deletetLast() throws NullPointerException{
         DoublyLink<T> current = last.getPrevious();
         DoublyLink<T> temp = last;
+
+        if(isEmpty())
+            throw new NullPointerException("La lista esta vacia.");
 
         last = current;
         current.setNext(null);
@@ -259,6 +326,9 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         return temp;
     }
 
+    /**
+     * Imrpime el contenido de la lista.
+     */
     public void displayList() {
         System.out.print("List (first--> ");
         DoublyLink<T> current = first;
