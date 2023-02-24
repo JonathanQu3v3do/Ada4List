@@ -1,67 +1,56 @@
 package Link;
 /**
- * descripcion corta
- * parámetros de entrada
- * parámetros de salida
- * 
- * 
- * The Link class represents a node in a linked list, which contains a generic data element
- * and a reference to the next node in the list.
- *
- * @param <T> the type of data stored in the node.
-*/
+ * La clase Link representa cada Nodo de la Lista.
+ * @author: Andrea Torres y Jonathan Quevedo
+ * @param <T> tipo de dato que guarda el nodo
+ * @see <https://github.com/JonathanQu3v3do/Ada4List.git>
+ */
 public class Link<T> {
-    private T dData; // the data element stored in the node
-    private Link<T> next; // reference to the next node in the list
-    
+    private T dData; // dato que guarda el nodo
+    private Link<T> next; // referencia al siguiente nodo de la lista
+
     /**
-    
-    Constructs a new Link object with the given data element and a null reference to the next node.
-    @param dd the data element stored in the node.
-    */
-    public Link(T dd ) {
+     * Constructor para Link
+     * @param dd El parámetro dd contiene los datos de un nodo
+     */
+    public Link(T dd) {
         dData = dd;
         next = null;
     }
 
     /**
-    
-    Displays the data element stored in the node.
-    */
+     * Método que imrpime el contenido del nodo
+     */
     public void displayLink() {
         System.out.print("{" + getdData() + "} ");
     }
 
     /**
-    
-    Returns the data element stored in the node.
-    @return the data element stored in the node.
-    */
+     * Devuelve el dato guardado en el nodo
+     * @return T dato guardado en el nodo
+     */
     public T getdData() {
         return dData;
     }
     /**
-    
-    Sets the data element stored in the node.
-    @param dData the new data element to be stored in the node.
-    */
+     * Establece el dato almacenado en el nodo
+     * @param dData dato a guardar en el nodo
+     */
     public void setdData(T dData) {
         this.dData = dData;
     }
 
     /**
-    
-    Returns the reference to the next node in the list.
-    @return the reference to the next node in the list.
-    */
+     * Devuelve la referencia al siguiente nodo de la lista
+     * @return Link<T> referencia al siguiente nodo de la lista
+     */
     public Link<T> getNext() {
         return next;
     }
     /**
-    
-    Sets the reference to the next node in the list.
-    @param next the new reference to the next node in the list.
-    */
+     * Establece la referencia al siguiente nodo de la lista
+     * @param next nueva referencia al siguiente nodo de la lista
+     */
     public void setNext(Link<T> next) {
         this.next = next;
     }

@@ -1,6 +1,11 @@
 package DeLink;
 
 public class DeListMain {
+    
+    /** 
+     * @param args
+     * @throws NullPointerException
+     */
     public static void main(String[] args) throws NullPointerException {
         DELinkList<Integer> list = new DELinkList<Integer>();
         DELinkList<String> list2 = new DELinkList<String>();
