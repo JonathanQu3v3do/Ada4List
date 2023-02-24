@@ -3,6 +3,10 @@ package Link;
 public class LinkList<T extends Comparable<T>> {
     private Link<T> first;
 
+    /**
+    
+    Constructs a new LinkList object with a null reference to the first node.
+    */
     public LinkList() {
         first = null;
     }

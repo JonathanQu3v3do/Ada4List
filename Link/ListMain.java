@@ -1,5 +1,8 @@
 package Link;
-
+/** Maneja listas de datos.
+ * @author Jonathan Quevedo
+ * @author Andrea Torres
+*/
 public class ListMain {
     public static void main(String[] args) throws NullPointerException {
         LinkList<Integer> list = new LinkList<Integer>();
