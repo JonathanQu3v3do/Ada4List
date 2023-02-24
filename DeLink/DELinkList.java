@@ -9,6 +9,11 @@ public class DELinkList<T extends Comparable<T>> {
         last = null;
     }
 
+    
+    /** 
+     * @return DeLink<T>
+     * @throws NullPointerException
+     */
     // 1
     public DeLink<T> firstNode() throws NullPointerException {
         if (isEmpty()) {
@@ -17,6 +22,11 @@ public class DELinkList<T extends Comparable<T>> {
         return first;
     }
 
+    
+    /** 
+     * @return DeLink<T>
+     * @throws NullPointerException
+     */
     // 1
     public DeLink<T> lastNode() throws NullPointerException {
         if (isEmpty()) {

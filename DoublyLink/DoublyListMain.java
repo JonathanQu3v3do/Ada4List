@@ -1,6 +1,11 @@
 package DoublyLink;
 
 public class DoublyListMain {
+    
+    /** 
+     * @param args
+     * @throws NullPointerException
+     */
     public static void main(String[] args) throws NullPointerException {
         DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
         DoublyLinkedList<String> list2 = new DoublyLinkedList<String>();

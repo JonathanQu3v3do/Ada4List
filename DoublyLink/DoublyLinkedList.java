@@ -9,6 +9,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         last = null;
     }
 
+    
+    /** 
+     * @return DoublyLink<T>
+     * @throws NullPointerException
+     */
     // 1
     public DoublyLink<T> firstNode() throws NullPointerException {
         if (isEmpty()) {
@@ -17,6 +22,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         return first;
     }
 
+    
+    /** 
+     * @return DoublyLink<T>
+     * @throws NullPointerException
+     */
     // 1
     public DoublyLink<T> lastNode() throws NullPointerException {
         if (isEmpty()) {

@@ -13,9 +13,17 @@ public class DeLink<T> {
         System.out.print("{" + getdData() + "} ");
     }
 
+    
+    /** 
+     * @return T
+     */
     public T getdData() {
         return dData;
     }
+    
+    /** 
+     * @param dData
+     */
     public void setdData(T dData) {
         this.dData = dData;
     }
