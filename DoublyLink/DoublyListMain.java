@@ -10,6 +10,13 @@ public class DoublyListMain {
         DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
         DoublyLinkedList<String> list2 = new DoublyLinkedList<String>();
         try {
+
+            list.insertFirst(2);
+            list.insertFirst(5);
+            list.insertFirst(6);
+            list.displayList();
+
+
             list2.mayorNode("a");
             list2.mayorNode("z");
             list2.mayorNode("c");
